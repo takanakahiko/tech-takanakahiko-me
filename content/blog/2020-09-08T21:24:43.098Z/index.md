@@ -1,7 +1,7 @@
 ---
 title: Gatsby.js で記事の URL のみカスタマイズする
 date: "2020-09-08T21:24:43.098Z"
-description: "説明"
+description: "Gatsby.jsで記事のURLをカスタマイズ(例えば /posts 以下に)する方法です。 "
 ---
 
 Gatsby.jsで記事のURLをカスタマイズする方法です。
