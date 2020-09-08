@@ -11,7 +11,7 @@ Gatsby.jsで記事のURLをカスタマイズする方法です。
 
 ## 結論
 
-これを
+gatsby-node.js のこれを
 
 ```js:gatsby-node.js
 exports.onCreateNode = ({ node, actions, getNode }) => {
