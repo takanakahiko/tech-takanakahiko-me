@@ -61,7 +61,8 @@ const Layout = ({ location, title, children }) => {
       <footer>
         © takanakahiko {new Date().getFullYear()}, Built with
         {` `}
-        <a href="https://www.gatsbyjs.org">Gatsby</a><br/>
+        <a href="https://www.gatsbyjs.org">Gatsby</a>
+        <br />
         This site uses Google Analytics.
       </footer>
     </div>
