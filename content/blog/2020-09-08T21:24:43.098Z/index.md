@@ -13,7 +13,7 @@ Gatsby.jsで記事のURLをカスタマイズする方法です。
 
 gatsby-node.js のこれを
 
-```js:gatsby-node.js
+```js:title=gatsby-node.js
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
 
@@ -30,7 +30,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
 
 こうします
 
-```js:gatsby-node.js
+```js:title=gatsby-node.js
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
 
@@ -64,7 +64,7 @@ gatsby-source-filesystem だとその中で `createFilePath` にて生成され�
 
 https://www.gatsbyjs.com/plugins/gatsby-source-filesystem/#createfilepath
 
-```js:gatsby-node.js
+```js:title=gatsby-node.js
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
 
@@ -83,7 +83,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
 今回ですと `value` に `/2020-09-08T21:24:43.098Z/` みたいな文字列が入っていたら、`/posts/2020-09-08T21:24:43.098Z/` にすれば良さそうです。
 そのため `value` を ``　`/posts${value}` `` に書き換えればいいというわけです。
 
-```js:gatsby-node.js
+```js:title=gatsby-node.js
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
 
