@@ -17,7 +17,7 @@ https://console.cloud.google.com/apis/library/run.googleapis.com
 
 - roles/run.admin : Cloud Run 管理者
 - roles/serverless.serviceAgent	: Cloud Run Cloud Run サービス エージェント
-- roles/storage.objectCreator	: Cloud Run 管理者
+- roles/storage.admin	: ストレージ管理者
 
 で、以下のファイルをリポジトリに置きます。
 
