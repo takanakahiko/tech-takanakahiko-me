@@ -94,6 +94,13 @@ https://cloud.google.com/container-registry/docs/advanced-authentication#gcloud-
 gcloud auth configure-docker --quiet
 ```
 
+GitHub Actions では、 step から環境変数を設定するために `set-env` というのを使う必要があり、以下のように環境変数の設定をすることにしました。
+これで `IMAGE` に　`'asia.gcr.io/${{ env.GCP_PROJECT }}/${{ env.SERVICE_NAME }}:${{ github.sha }}'` が入ります。
+
+```
+echo ::set-env name=IMAGE::'asia.gcr.io/${{ env.GCP_PROJECT }}/${{ env.SERVICE_NAME }}:${{ github.sha }}'
+```
+
 `gcloud run deploy` も同様に、プロンプトで確認が入るのを防ぐために、 `--quiet` が必要です。
 また、オプションは適宜変更する必要があるかなと思います。
 ビルド時にメモリが足りずにエラーになるようだったらこんな感じで `--memory 512Mi` を指定するなどをします。
