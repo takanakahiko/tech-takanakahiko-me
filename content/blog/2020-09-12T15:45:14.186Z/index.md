@@ -9,7 +9,10 @@ GitHub Actions から Cloud Run へデプロイする方法です。
 
 ## 結論
 
-あらかじめサービスアカウントを作って鍵を発行して GCP_SA_KEY を リポジトリの Secrets に登録します。
+CloudRun の APIを有効にしておきます。
+https://console.cloud.google.com/apis/library/run.googleapis.com
+
+あらかじめサービスアカウントを作って鍵を発行して `GCP_SA_KEY` を リポジトリの Secrets に登録します。
 サービスアカウントには以下の Role （か、カスタムロール）を設定します。
 
 - roles/run.admin : Cloud Run 管理者
@@ -75,7 +78,7 @@ jobs:
 ## メモ
 
 覚えておきたいことをメモしておきます。
-Cloud Run のデプロイに必要なことをそのままの順序で行っているだけです。
+基本的には Cloud Run のデプロイに必要なことをそのままの順序で行っているだけです。
 
 `gcloud` コマンドを使えるようにするために `GoogleCloudPlatform/github-actions/setup-gcloud@master` でセットアップします。
 README 内にあるサンプルをペタッとして終わりです。楽ですね。
