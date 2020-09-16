@@ -1,7 +1,7 @@
 ---
 title: 【Bash】シェルスクリプトにて exit 前にコマンドを実行する
 date: "2020-09-16T16:05:34.726Z"
-description: "シェルスクリプトの中断前にtry-catch-finalyのように処理を実行する方法です"
+description: "シェルスクリプトの中断前にtry-catch-finallyのように処理を実行する方法です"
 ---
 
 シェルスクリプト内で異常終了時のハンドリングでハマったので。
@@ -17,12 +17,12 @@ description: "シェルスクリプトの中断前にtry-catch-finalyのよう�
 #!/bin/bash -e
 
 # 終了前に実行したい処理を定義する（関数名は何でも良い）
-function finaly () {
+function finally () {
   echo 'nyao'
 }
 
 # EXITシグナルをtrapして中断前に実行したい処理を登録する
-trap finaly EXIT
+trap finally EXIT
 
 # 以降に失敗するかもしれない処理を書く
 echo "hoge"
@@ -121,25 +121,25 @@ echo "終了しました
 ```bash:title=main.sh
 #!/bin/bash -e
 
-function finaly(){
+function finally(){
   echo "終了しました"
 }
-trap finaly EXIT
+trap finally EXIT
 
 cd hoge
 cat huga.txt
 ```
 
-重要なところはこの `trap finaly EXIT` というやつです。
-これは「EXITシグナルをtrapして中断前にfinalyを実行する」という記述になります。
+重要なところはこの `trap finally EXIT` というやつです。
+これは「EXITシグナルをtrapして中断前にfinallyを実行する」という記述になります。
 
 そもそも、シグナルとは、実行中のプロセスにさまざまなイベントを通知するために送出されるものです。
 例えば、シェルスクリプト内のとあるコマンドが失敗する際には「シェルのプロセスに `EXIT`  というシグナルが送出されたあとにシェルスクリプトが中断される」ということが行われます。
-`EXIT` シグナルは正常終了時でも送出されるので、 `try-catch-finaly` 構文で言うところの `finaly` のような挙動を再現するのに適切です。
+`EXIT` シグナルは正常終了時でも送出されるので、 `try-catch-finally` 構文で言うところの `finally` のような挙動を再現するのに適切です。
 
 その送出されてきたシグナルに応じて処理を行おうというものが `trap` の正体です。
 
-ちなみに他の、例えば `ERR` シグナルを用いることで `try-catch-finaly` で言うところの `catch` も再現することが出来ます。
+ちなみに他の、例えば `ERR` シグナルを用いることで `try-catch-finally` で言うところの `catch` も再現することが出来ます。
 
 ```bash:title=main.sh
 #!/bin/bash -e
@@ -149,10 +149,10 @@ function catch(){
 }
 trap catch ERR
 
-function finaly(){
+function finally(){
   echo "終了しました"
 }
-trap finaly EXIT
+trap finally EXIT
 
 cd hoge
 echo "hogeに移動しました"
@@ -224,10 +224,10 @@ git checkout -f "$ORIGINAL_BRANCH"
 ORIGINAL_BRANCH=$(git rev-parse --abbrev-ref HEAD)
 
 # EXITシグナルが送出されたらもとのブランチに戻る
-function finaly(){
+function finally(){
   git checkout -f "$ORIGINAL_BRANCH"
 }
-trap finaly EXIT
+trap finally EXIT
 
 # シェルスクリプトの引数で指定されたコミットハッシュに移動する
 git checkout $1
