@@ -142,7 +142,7 @@ POSIXを確認したところ、 `EXIT` は正確にはシグナルと呼べる�
 trap の引数に指定できるのは「 `EXIT` あるいはシグナル」ということらしいです。
 https://pubs.opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html#trap
 
-また、Bashの使用には明確な挙動が書かれています。
+また、Bashの仕様には明確な挙動が書かれています。
 
 > If a sigspec is 0 or EXIT, arg is executed when the shell exits.
 
