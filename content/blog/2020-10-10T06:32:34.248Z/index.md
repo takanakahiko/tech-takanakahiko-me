@@ -4,7 +4,8 @@ date: "2020-10-10T06:32:34.248Z"
 description: "GitHub Actions で set-env が Deprecate になった件に関して、代替手段を紹介します"
 ---
 
-基本的に
+GitHub Actions で set-env が Deprecate になってたので対応しました。
+ちょっと影響受ける人多そうなので記事にしておきました。
 
 ## 結論
 
