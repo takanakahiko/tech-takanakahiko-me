@@ -49,7 +49,7 @@ echo "IMAGE=asia.gcr.io/${{env.GCP_PROJECT}}/${{ matrix.SERVICE_NAME }}:${{ gith
 できなかったら、まあ…、頑張ってください。
 
 ```sh
-find ./.github/workflows -type f -name "*.yml" | xargs sed -i '' -e 's/echo ::set-env name=\(.*\)::['\'']?\(.*\)['\'']?$/echo "\1=\2" >> $GITHUB_ENV/'
+find ./.github/workflows -type f -name "*.yml" | xargs sed -i '' -e 's/echo ::set-env name=\(.*\)::['\'']\(.*\)['\'']$/echo "\1=\2" >> $GITHUB_ENV/'
 ```
 
 過去の記事にある表記も直しておきました。
