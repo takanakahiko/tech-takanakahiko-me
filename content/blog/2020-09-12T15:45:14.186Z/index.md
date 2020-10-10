@@ -55,7 +55,7 @@ jobs:
         run: gcloud auth configure-docker --quiet'
 
       - name: Set the docker image name
-        run: echo ::set-env name=IMAGE::'asia.gcr.io/${{ env.GCP_PROJECT }}/${{ env.SERVICE_NAME }}:${{ github.sha }}'
+        run: echo "IMAGE=asia.gcr.io/${{ env.GCP_PROJECT }}/${{ env.SERVICE_NAME }}:${{ github.sha }}" >> $GITHUB_ENV
 
       - name: Build a docker image
         run: docker build -t $IMAGE
@@ -97,11 +97,11 @@ https://cloud.google.com/container-registry/docs/advanced-authentication#gcloud-
 gcloud auth configure-docker --quiet
 ```
 
-GitHub Actions では、 step から環境変数を設定するために `set-env` というのを使う必要があり、以下のように環境変数の設定をすることにしました。
+GitHub Actions では、 step から環境変数を設定するために `$GITHUB_ENV` というのを使う必要があり、以下のように環境変数の設定をすることにしました。
 これで `IMAGE` に　`'asia.gcr.io/${{ env.GCP_PROJECT }}/${{ env.SERVICE_NAME }}:${{ github.sha }}'` が入ります。
 
 ```
-echo ::set-env name=IMAGE::'asia.gcr.io/${{ env.GCP_PROJECT }}/${{ env.SERVICE_NAME }}:${{ github.sha }}'
+echo "IMAGE=asia.gcr.io/${{ env.GCP_PROJECT }}/${{ env.SERVICE_NAME }}:${{ github.sha }}" >> $GITHUB_ENV
 ```
 
 `gcloud run deploy` も同様に、プロンプトで確認が入るのを防ぐために、 `--quiet` が必要です。
