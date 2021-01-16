@@ -3,7 +3,7 @@ import { MdCreate as EditIcon } from "react-icons/md"
 
 export default function EditLink({ slug }) {
   return (
-    <div sx={{ display: `flex`, alignItems: `center`, mt: 9 }}>
+    <div sx={{ display: `flex`, alignItems: `center`, mt: 9 }} style={{margin: "20px 0px"}}>
       <a
         sx={{ variant: `links.muted` }}
         href={slug.replace(/\/posts\/(.+)\//gi, "https://github.com/takanakahiko/tech-takanakahiko-me/blob/master/content/blog/$1/index.md")}

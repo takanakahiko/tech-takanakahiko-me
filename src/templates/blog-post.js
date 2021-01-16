@@ -7,6 +7,13 @@ import SEO from "../components/seo"
 import EditLink from "../components/edit-link"
 import { rhythm, scale } from "../utils/typography"
 
+import {
+  FacebookShareButton,
+  FacebookIcon,
+  TwitterShareButton,
+  TwitterIcon
+} from "react-share";
+
 const BlogPostTemplate = ({ data, pageContext, location }) => {
   const post = data.markdownRemark
   const siteTitle = data.site.siteMetadata.title
@@ -39,6 +46,18 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
           </p>
         </header>
         <section dangerouslySetInnerHTML={{ __html: post.html }} />
+        <div>
+          <span style={{ marginRight: "10px" }}>
+            <TwitterShareButton url={`https://tech.takanakahiko.me${post.fields.slug}`} title={post.frontmatter.title} >
+              <TwitterIcon size={32} round={true} />
+            </TwitterShareButton>
+          </span>
+          <span style={{ marginRight: "10px" }}>          
+            <FacebookShareButton url={`https://tech.takanakahiko.me${post.fields.slug}`} >
+              <FacebookIcon size={32} round={true} />
+            </FacebookShareButton>
+          </span>
+        </div>
         <EditLink slug={post.fields.slug} />
         <hr
           style={{
