@@ -1,0 +1,42 @@
+---
+title: M1 Mac で goenv から古いバージョンの Go が導入できない件の対応
+date: "2022-02-28T04:36:56.681Z"
+description: "M1 Mac で goenv から古いバージョンの Go が導入できない件の対応"
+---
+
+M1 Mac の環境で `goenv install 1.11.13` で何も実行されずに終了してしまうので対応しました。
+anyenv から導入した goenv なので、そうじゃない場合は諸々違うかも。
+
+## 結論
+
+ターミナルを Rosseta2 で起動する
+
+## メモ
+
+以下のように実行しても何も表示されず、当然 Go1.11.13 は使えないという状況
+
+```sh
+$ goenv install 1.11.13
+
+# 何も表示されず...
+```
+
+まず M1 Mac でのトラブルは Rosseta2 で試してみようとのことなので Rosseta2 を導入してみる
+
+```sh
+$ softwareupdate --install-rosetta
+```
+
+ターミナルを Rosseta2 で起動するように設定する
+
+![ターミナルのアイコンを右クリックして情報を見るを選択](./img1.png)
+
+![Rosseta を使用して開くを選択](./img2.png)
+
+ターミナルを起動して goenv を叩く
+
+```sh
+$ goenv install 1.11.13
+
+# goenv が正常に動く
+```
