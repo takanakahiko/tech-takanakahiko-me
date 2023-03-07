@@ -22,7 +22,7 @@ description: "Mac でコマンド終了時に音を鳴らす方法について�
 $ ./long_task.sh && afplay /System/Library/Sounds/Submarine.aiff
 ```
 
-##　Memo
+## Memo
 
 別に流す音声ファイルはなんだっていいです。音声ファイルなら基本的に問題なく流せる気がします。
 
