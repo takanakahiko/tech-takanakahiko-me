@@ -6,7 +6,7 @@ module.exports = {
       summary: `who lives and works in Tokyo building useful things.`,
     },
     description: `A starter blog demonstrating what Gatsby can do.`,
-    siteUrl: `https://gatsby-starter-blog-demo.netlify.app/`,
+    siteUrl: `https://tech.takanakahiko.me/`,
     social: {
       twitter: `takanakahiko`,
     },
