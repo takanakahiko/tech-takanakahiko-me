@@ -71,6 +71,8 @@
     "source-map-js": "^1.2.2",
     "proxy-addr": "^2.0.8",
     "**/gatsby/path-to-regexp": "0.1.13",
-    "**/gatsby/webpack": "~5.104.1"
+    "**/gatsby/webpack": "~5.104.1",
+    "**/gatsby/webpack-dev-middleware": "^7.4.6",
+    "@graphql-tools/utils": "^12.0.1"
   }
 }
